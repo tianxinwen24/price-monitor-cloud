@@ -1,0 +1,322 @@
+{
+  "categories": [
+    "经典版",
+    "绿标",
+    "橙标",
+    "2S"
+  ],
+  "product_urls": {
+    "2S 55D23": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=528096869454&mi_id=00004LIBgGfuz2a20_zYQnSAQevAVeInNdnE09CWd-rSEOg&ns=1&priceTId=213e002517840882521601909e0fae&spm=a21n57.1.hoverItem.9&utparam=%7B%22aplus_abtest%22%3A%2261cb3f82b8ea83cafee5eb98338fa4df%22%7D&xxc=taobaoSearch",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1057730360729&mi_id=00004LIBgGfuz2a20_zYQnSAQevAVeInNdnE09CWd-rSEOg&ns=1&priceTId=213e002517840882521601909e0fae&spm=a21n57.1.hoverItem.9&utparam=%7B%22aplus_abtest%22%3A%2261cb3f82b8ea83cafee5eb98338fa4df%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/3392602.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "2S 6-QW-45": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=546778594967&mi_id=0000CkhXfivAsEcfBpEDoIkg6R9KRT9ROcTJAY0lhvxsGd0&ns=1&priceTId=213e002517840882047146170e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%2292195fd9209a003235a891c6c1cccad6%22%7D&xxc=taobaoSearch",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=588750628065&mi_id=0000CkhXfivAsEcfBpEDoIkg6R9KRT9ROcTJAY0lhvxsGd0&ns=1&priceTId=213e002517840882047146170e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%2292195fd9209a003235a891c6c1cccad6%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/2989745.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "2S L2400": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=544577405248&mi_id=0000MKVPPEpYt2u9uk4fAOYJSso0dabfh90KTNtI12imnTY&ns=1&priceTId=213e002517840883021005721e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22b49d2b450cbc2c8d4d77282bcbc31cca%22%7D&xxc=taobaoSearch",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=588749292074&mi_id=0000MKVPPEpYt2u9uk4fAOYJSso0dabfh90KTNtI12imnTY&ns=1&priceTId=213e002517840883021005721e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22b49d2b450cbc2c8d4d77282bcbc31cca%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/3392902.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "橙标 EFB60": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1011694793450&mi_id=0000LJs-DQbW-r89ARF46hLdULKOtmOyguYZMiGwYrutRF8&ns=1&priceTId=213e002517840877357016988e0fae&spm=a21n57.1.hoverItem.1&utparam=%7B%22aplus_abtest%22%3A%228bc2bed21d2506262b535de33d835a35%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100130229442.html?pcdk=GPgaf2DfVQvSnxwhclCZpMjsJzCVDrnhlLgCojuHAsdHA7YPPDM7pXVxx2RsYu6a.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODcyMDAzNyUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMyMTIxMDM0NjA3",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=944744740068&mi_id=00001mjC2UcVY7zEJ32olO_vbRouhWTME_DPIuw5oDlkedo&ns=1&priceTId=213e002517840879135165254e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22e4d16c4538e3ebfbdfbde58d04a26151%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100237788167.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "橙标 EFB70": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1011753431675&mi_id=0000HBe-r9KFwEci-97i3IGYsCMvWmo8YiJMW2wUIQ6thTY&ns=1&priceTId=213e002517840880677933000e0fae&spm=a21n57.1.hoverItem.7&utparam=%7B%22aplus_abtest%22%3A%229d8340cbcdbf6129bf44f1bc7b7594d9%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100134455638.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=979597497094&mi_id=00004i1cSYLNtQ6aAmOtfqgkZdWOTWbIEALwdvuRN0eQzf4&ns=1&priceTId=213e002517840881531762445e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22e90ed30838724fb02a69a201ce76d1d6%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100317309526.html?pcdk=rThinGJN3txkxhPpxNhI3Cv3yw8WejkQuWKYdFFQABRGRyPgk0Mngja8L1d8Qn2F.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDE2NDYwMDIwOCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjM0MjY3Mjc0MTE"
+    },
+    "橙标 Q-85": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1013250801309&mi_id=0000HBe-r9KFwEci-97i3IGYsCMvWmo8YiJMW2wUIQ6thTY&ns=1&priceTId=213e002517840880677933000e0fae&spm=a21n57.1.hoverItem.7&utparam=%7B%22aplus_abtest%22%3A%229d8340cbcdbf6129bf44f1bc7b7594d9%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100110612241.html?pcdk=oY79QTO8ImyMfcaRsmhdZjpnUxz2gYjtcIqgChideFD3m4ZHB4TkTEgrK45Pcea4.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODc0ODk4NSUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMyOTIwNjQ3NjQ",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=978341115712&mi_id=0000f2BupovbG8hhGPTXq_EOy82BY8PjLdX3kawYBFPQt-I&ns=1&priceTId=213e002517840880436508482e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22ce6b1a791cc2b835a8661dd03c7ac98e%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100317309438.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "橙标 S-95": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1013251337590&mi_id=0000HBe-r9KFwEci-97i3IGYsCMvWmo8YiJMW2wUIQ6thTY&ns=1&priceTId=213e002517840880677933000e0fae&spm=a21n57.1.hoverItem.7&utparam=%7B%22aplus_abtest%22%3A%229d8340cbcdbf6129bf44f1bc7b7594d9%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100165626132.html?pcdk=IGrYSOFhFJmqxwbFk3yWtZe67fHpwjE7JBnxE1-KEABhMGJEr6Ug7jCx0Le8pkym.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODc3MzE4NSUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMxNzU0Nzk2MTQ1",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=978333959654&mi_id=00000cCiVayIOeAwqo3CDOneLFyNgIE3cO-PZbzjSoj71rQ&ns=1&priceTId=213e002517840881292458121e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22f4332882c30eacf6e0ec347efc107aa0%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100237788129.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "经典版 46B24": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=1028965604657&mi_id=0000XKC1SBIT8V75mlQIMvEbZezdfQsmY3tniXwGRhyE7zQ&ns=1&priceTId=2147802317840867286988877e0ff8&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%228e3839f83895343bf8d6e8a8d8216d38%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100332533646.html?pcdk=pc0BzCtZpQfXWhJC_GfS2lB3VGli1zlQBhlqNGFhdzVoUKjynIZE4M4Ble5t0Qx5.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODU1NDM4MCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMxODY1MzQzMjY4",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=588740248433&mi_id=0000yXhMSVuG3l4EjE-Bx6A_Mowb-OmWi3w9QJQeVQwD0vo&ns=1&priceTId=2147802317840866637005386e0ff8&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%2244fa576710cdecedc70525d476e0425a%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100246748461.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "经典版 55D23": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=1029227908906&mi_id=0000NgNYfJlp8FjGpCXTt_s9aX3CkOBcgBdcd41DRqhMl0s&ns=1&priceTId=2147802317840867718663197e0ff8&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%22846b380f42a1af28a0cc95608386b70d%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100110613837.html?pcdk=3d_H470T4-Bt5-FHN8_uUB_pAXC7Fo8ptrMVSWH7Epf6NdAzr_hNXu7FO-Fu3fN6.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODU3OTI0NiUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMxMjU2NDU4NDk3",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=589261047005&mi_id=0000NgNYfJlp8FjGpCXTt_s9aX3CkOBcgBdcd41DRqhMl0s&ns=1&priceTId=2147802317840867718663197e0ff8&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%22846b380f42a1af28a0cc95608386b70d%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100329427454.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "经典版 6-QW-45MF": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1028965604657&mi_id=0000XKC1SBIT8V75mlQIMvEbZVnzxL9SPgMnCXS8vsnxZIs&ns=1&priceTId=213e002517840877723052469e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22bad9532a970a342b7a6e6cde59c04833%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100134209269.html?pcdk=cbVJeZ-kExNfPs5Sy9RtmkonjZGpH8jlxSD3LQc1XNjJCHxQjfLEYxOYWf8Pz0-D.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODY2OTc3MCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjM4NjQ4OTkxNw",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1053281075504&mi_id=0000LJs-DQbW-r89ARF46hLdULKOtmOyguYZMiGwYrutRF8&ns=1&priceTId=213e002517840877357016988e0fae&spm=a21n57.1.hoverItem.1&utparam=%7B%22aplus_abtest%22%3A%228bc2bed21d2506262b535de33d835a35%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100246748461.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "经典版 80D26": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1026840827060&mi_id=0000mdzZtvoLSLG7i-HVBgAiwo-yp1GXMbE6vp8Pm46QRP4&ns=1&priceTId=213e002517840877046383970e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%227924e567599379b419bcf981d4272c3a%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100165626216.html?pcdk=zjG3kQZ8xICWBydLUZgLnOmSGuxpy3cyvO8O_M-zh5Ivy37oCajEO0c0HHho83oS.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODYzNjE4MSUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMxMTYzMDAyNDA",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1054057238790&mi_id=000040IYtBDh2Yvf2dsOCsayRgF_ryvMGJgfh66AX6xwFCk&ns=1&priceTId=213e002517840876770321423e0fae&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%22dbf4ba298a2e75c5ba6994e725114058%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100329427452.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "经典版 L2400": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=1026839443020&mi_id=0000IZEAXLMq9-XuQ8JqNUstrDqAf7SanhBbmYdaqX4UEYY&ns=1&priceTId=2147802317840868828091431e0ff8&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%22b6063a25ae11579051af1cc98acc23a2%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100130229446.html?pcdk=IdTuTh7cW22t4GjqEvhbEdfDTA7Np9ib8kkuVEuOkJraZS2KKO5Dt05c0UUu-hP-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODYwMTYzMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjM2NjI0MTM5MDc",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=18&id=1053279831077&mi_id=0000IZEAXLMq9-XuQ8JqNUstrDqAf7SanhBbmYdaqX4UEYY&ns=1&priceTId=2147802317840868828091431e0ff8&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%22b6063a25ae11579051af1cc98acc23a2%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100329427464.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "绿标 VRL260": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1012820106899&mi_id=00001EOHCAlfP9Fu0iCnZI41kwxt5rbhJhX81EFzSifIN74&ns=1&priceTId=213e002517840878408277566e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%228ddfcc57df6a8ad02eafab79d9203f8c%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100165625670.html?pcdk=IDnYiuMafTo9MNO-bOq55bH1ocVggKMUIiKm36QFtGYiAme0k4nCF5B-ejLd3L3E.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDA4ODY5ODE2NiUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjM1NzAwMzQ1MTk",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=589807090682&mi_id=0000vOYqzv_ffau7dTeI0f4Q7OV_fxZJJ3hGY0bY7yEbE_I&ns=1&priceTId=213e002517840878057524987e0fae&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%2269d4fb4f8b4ac7d0d681643df3e3d988%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100317309450.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    },
+    "绿标 VRL370": {
+      "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1013680849607&mi_id=0000zlU67ZC5hxaEXfLPXbFxnj2qCMqjfM4bJgfqepEbKSI&ns=1&priceTId=213e002517840878844122977e0fae&spm=a21n57.1.hoverItem.3&utparam=%7B%22aplus_abtest%22%3A%229e61fda679c2f7503b7d88dfa17df299%22%7D&xxc=taobaoSearch",
+      "京东养车自营店": "https://item.jd.com/100134209211.html?pcdk=JV3eEUGNuryE4zv2SW3nmDAFa_M18tWSN1ARTWyaISOuYX-tsxqx4jO08j2kZxCa.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMiUyM3NrdV9jYXJkJTQwMTc4NDE2NTcwODA0NiUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMxMzQzNzc2NzY5",
+      "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1055064989638&mi_id=0000YsZhAdaytuBd6m9ffFEF1Zk1M3lKiqeaB8j0cyYNXU4&ns=1&priceTId=213e002517840878647821064e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%2215eab4bd4ddda6ba9d3afb9e2581d10e%22%7D&xxc=taobaoSearch",
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/100237788127.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+    }
+  },
+  "products": [
+    {
+      "category": "经典版",
+      "limit_price": 185,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100332533646",
+          "骆驼蓄电池秒送旗舰店": "100246748461"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1028965604657",
+          "天猫养车旗舰店": "588740248433"
+        }
+      },
+      "product_name": "经典版 46B24"
+    },
+    {
+      "category": "经典版",
+      "limit_price": 259,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100110613837",
+          "骆驼蓄电池秒送旗舰店": "100329427454"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1029227908906",
+          "天猫养车旗舰店": "589261047005"
+        }
+      },
+      "product_name": "经典版 55D23"
+    },
+    {
+      "category": "经典版",
+      "limit_price": 265,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100130229446",
+          "骆驼蓄电池秒送旗舰店": "100329427464"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1026839443020",
+          "天猫养车旗舰店": "1053279831077"
+        }
+      },
+      "product_name": "经典版 L2400"
+    },
+    {
+      "category": "经典版",
+      "limit_price": 300,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100165626216",
+          "骆驼蓄电池秒送旗舰店": "100329427452"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1026840827060",
+          "天猫养车旗舰店": "1054057238790"
+        }
+      },
+      "product_name": "经典版 80D26"
+    },
+    {
+      "category": "经典版",
+      "limit_price": 185,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100134209269",
+          "骆驼蓄电池秒送旗舰店": "100246748461"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1028965604657",
+          "天猫养车旗舰店": "1053281075504"
+        }
+      },
+      "product_name": "经典版 6-QW-45MF"
+    },
+    {
+      "category": "绿标",
+      "limit_price": 620,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100165625670",
+          "骆驼蓄电池秒送旗舰店": "100317309450"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1012820106899",
+          "天猫养车旗舰店": "589807090682"
+        }
+      },
+      "product_name": "绿标 VRL260"
+    },
+    {
+      "category": "绿标",
+      "limit_price": 649,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100134209211",
+          "骆驼蓄电池秒送旗舰店": "100237788127"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1013680849607",
+          "天猫养车旗舰店": "1055064989638"
+        }
+      },
+      "product_name": "绿标 VRL370"
+    },
+    {
+      "category": "橙标",
+      "limit_price": 320,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100130229442",
+          "骆驼蓄电池秒送旗舰店": "100237788167"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1011694793450",
+          "天猫养车旗舰店": "944744740068"
+        }
+      },
+      "product_name": "橙标 EFB60"
+    },
+    {
+      "category": "橙标",
+      "limit_price": 390,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100110612241",
+          "骆驼蓄电池秒送旗舰店": "100317309438"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1013250801309",
+          "天猫养车旗舰店": "978341115712"
+        }
+      },
+      "product_name": "橙标 Q-85"
+    },
+    {
+      "category": "橙标",
+      "limit_price": 425,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100165626132",
+          "骆驼蓄电池秒送旗舰店": "100237788129"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1013251337590",
+          "天猫养车旗舰店": "978333959654"
+        }
+      },
+      "product_name": "橙标 S-95"
+    },
+    {
+      "category": "橙标",
+      "limit_price": 400,
+      "platforms": {
+        "京东": {
+          "京东养车自营店": "100134455638",
+          "骆驼蓄电池秒送旗舰店": "100317309526"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "1011753431675",
+          "天猫养车旗舰店": "979597497094"
+        }
+      },
+      "product_name": "橙标 EFB70"
+    },
+    {
+      "category": "2S",
+      "limit_price": 199,
+      "platforms": {
+        "京东": {
+          "骆驼蓄电池秒送旗舰店": "2989745"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "546778594967",
+          "天猫养车旗舰店": "588750628065"
+        }
+      },
+      "product_name": "2S 6-QW-45"
+    },
+    {
+      "category": "2S",
+      "limit_price": 279,
+      "platforms": {
+        "京东": {
+          "骆驼蓄电池秒送旗舰店": "3392602"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "528096869454",
+          "天猫养车旗舰店": "1057730360729"
+        }
+      },
+      "product_name": "2S 55D23"
+    },
+    {
+      "category": "2S",
+      "limit_price": 279,
+      "platforms": {
+        "京东": {
+          "骆驼蓄电池秒送旗舰店": "3392902"
+        },
+        "淘宝": {
+          "camel骆驼汽配旗舰店": "544577405248",
+          "天猫养车旗舰店": "588749292074"
+        }
+      },
+      "product_name": "2S L2400"
+    }
+  ],
+  "shops": [
+    {
+      "key": "天猫养车旗舰店",
+      "name": "天猫养车旗舰店",
+      "platform": "淘宝"
+    },
+    {
+      "key": "camel骆驼汽配旗舰店",
+      "name": "camel骆驼汽配旗舰店",
+      "platform": "淘宝"
+    },
+    {
+      "key": "京东养车自营店",
+      "name": "京东养车自营店",
+      "platform": "京东"
+    },
+    {
+      "key": "骆驼蓄电池秒送旗舰店",
+      "name": "骆驼蓄电池秒送旗舰店",
+      "platform": "京东"
+    }
+  ]
+}
