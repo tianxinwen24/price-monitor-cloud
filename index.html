@@ -2254,32 +2254,37 @@ function renderPriceTrendChart(history, limitPrice) {
   });
 }
 
-// 2. 店铺均价对比 (Bar Chart)
+// 2. 平台价格对比 (Bar Chart - aggregated by platform)
 function renderShopAvgChart(history, limitPrice) {
   const ctx = document.getElementById('trendShopAvgChart').getContext('2d');
   if (trendCharts.shopAvg) trendCharts.shopAvg.destroy();
 
-  // Calculate average price per shop
-  const shopTotals = {};
-  const shopCounts = {};
+  // Calculate average price per platform (淘宝/京东)
+  const platformTotals = {};
+  const platformCounts = {};
   history.forEach(h => {
-    if (h.price == null || !h.shop_name) return;
+    if (h.price == null || !h.platform) return;
     const price = parseFloat(h.price);
-    if (!shopTotals[h.shop_name]) { shopTotals[h.shop_name] = 0; shopCounts[h.shop_name] = 0; }
-    shopTotals[h.shop_name] += price;
-    shopCounts[h.shop_name]++;
+    if (!platformTotals[h.platform]) { platformTotals[h.platform] = 0; platformCounts[h.platform] = 0; }
+    platformTotals[h.platform] += price;
+    platformCounts[h.platform]++;
   });
 
-  const shopNames = Object.keys(shopTotals);
-  const avgPrices = shopNames.map(name => (shopTotals[name] / shopCounts[name]).toFixed(2));
-  const colors = shopNames.map(name => getShopColor(name).border);
-  const bgColors = shopNames.map(name => getShopColor(name).bg);
+  const platformNames = Object.keys(platformTotals);
+  const avgPrices = platformNames.map(name => parseFloat((platformTotals[name] / platformCounts[name]).toFixed(2)));
+
+  const platformColors = {
+    '淘宝': { bg: 'rgba(234,88,12,0.8)', border: '#ea580c' },
+    '京东': { bg: 'rgba(37,99,235,0.8)', border: '#2563eb' }
+  };
+  const bgColors = platformNames.map(name => (platformColors[name] || { bg: 'rgba(100,116,139,0.8)' }).bg);
+  const borderColors = platformNames.map(name => (platformColors[name] || { border: '#64748b' }).border);
 
   const datasets = [{
-    label: '均价',
+    label: '平台均价',
     data: avgPrices,
     backgroundColor: bgColors,
-    borderColor: colors,
+    borderColor: borderColors,
     borderWidth: 2,
     borderRadius: 6
   }];
@@ -2287,14 +2292,14 @@ function renderShopAvgChart(history, limitPrice) {
   if (limitPrice) {
     datasets.push({
       label: '限制底价',
-      data: shopNames.map(() => limitPrice),
-      type: 'line', borderColor: '#f59e0b', borderDash: [6, 4], borderWidth: 2, pointRadius: 0, fill: false
+      data: platformNames.map(() => limitPrice),
+      type: 'line', borderColor: '#dc2626', borderDash: [6, 4], borderWidth: 2, pointRadius: 0, fill: false
     });
   }
 
   trendCharts.shopAvg = new Chart(ctx, {
     type: 'bar',
-    data: { labels: shopNames.map(n => n.length > 8 ? n.substring(0, 8) + '...' : n), datasets },
+    data: { labels: platformNames, datasets },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
@@ -2303,7 +2308,7 @@ function renderShopAvgChart(history, limitPrice) {
       },
       scales: {
         y: { beginAtZero: false, ticks: { callback: v => '¥' + v } },
-        x: { ticks: { font: { size: 10 } } }
+        x: { ticks: { font: { size: 12 } } }
       }
     }
   });
@@ -2321,26 +2326,33 @@ function renderPriceDistChart(history, limitPrice) {
     return;
   }
 
-  // Determine price range and create buckets
-  const minP = Math.floor(Math.min(...allPrices) / 10) * 10;
-  const maxP = Math.ceil(Math.max(...allPrices) / 10) * 10;
-  const bucketSize = Math.max(10, Math.ceil((maxP - minP) / 8 / 10) * 10);
+  // Determine price range and create buckets (5-yuan buckets, at least 3)
+  const minP = Math.floor(Math.min(...allPrices) / 5) * 5;
+  const maxP = Math.ceil(Math.max(...allPrices) / 5) * 5;
+  const range = maxP - minP;
+  const bucketSize = range <= 15 ? 5 : range <= 40 ? 10 : Math.ceil(range / 8 / 10) * 10;
   const buckets = [];
   const counts = [];
   for (let start = minP; start < maxP; start += bucketSize) {
     const end = start + bucketSize;
-    buckets.push(start + '-' + end);
+    buckets.push('¥' + start + '-' + end);
     counts.push(allPrices.filter(p => p >= start && p < end).length);
+  }
+  // Include max value in last bucket
+  if (counts.length > 0) {
+    counts[counts.length - 1] += allPrices.filter(p => p === maxP).length;
   }
 
   const barColors = counts.map((_, i) => {
     const bucketStart = minP + i * bucketSize;
-    if (limitPrice && bucketStart < limitPrice) return 'rgba(220,38,38,0.3)';
-    return 'rgba(37,99,235,0.3)';
+    if (limitPrice && bucketStart + bucketSize <= limitPrice) return 'rgba(220,38,38,0.25)';
+    if (limitPrice && bucketStart < limitPrice && bucketStart + bucketSize > limitPrice) return 'rgba(245,158,11,0.3)';
+    return 'rgba(37,99,235,0.25)';
   });
   const borderColors = counts.map((_, i) => {
     const bucketStart = minP + i * bucketSize;
-    if (limitPrice && bucketStart < limitPrice) return '#dc2626';
+    if (limitPrice && bucketStart + bucketSize <= limitPrice) return '#dc2626';
+    if (limitPrice && bucketStart < limitPrice && bucketStart + bucketSize > limitPrice) return '#f59e0b';
     return '#2563eb';
   });
 
@@ -2354,7 +2366,7 @@ function renderPriceDistChart(history, limitPrice) {
       responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { title: items => '¥' + items[0].label, label: ctx => ctx.parsed.y + ' 次' } }
+        tooltip: { callbacks: { title: items => items[0].label, label: ctx => ctx.parsed.y + ' 次' } }
       },
       scales: {
         y: { beginAtZero: true, ticks: { stepSize: 1, callback: v => v + '次' } },
