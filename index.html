@@ -464,7 +464,7 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
     <div class="col-md-6">
       <div class="card">
         <div class="card-body" style="padding:12px;">
-          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-currency-yen text-warning"></i> 低于限价均价</h6>
+          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-currency-yen text-warning"></i> 限价与近7天均价差值</h6>
           <div style="height:240px;position:relative;"><canvas id="trendBelowLimitAvgChart"></canvas></div>
         </div>
       </div>
@@ -659,12 +659,10 @@ let currentView = 'category';
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
   if (CLOUD_MODE) {
-    // Hide backend-dependent buttons
     ['monitor-btn', 'sync-btn'].forEach(id => {
       const el = document.getElementById(id);
       if (el) el.style.display = 'none';
     });
-    // Hide extension status badge
     const extBadge = document.getElementById('extension-status');
     if (extBadge) extBadge.style.display = 'none';
   }
@@ -2387,46 +2385,56 @@ function renderWarningDaysChart(history, limitPrice) {
   });
 }
 
-// 4. 低于限价均价
+// 4. 低于限价均价（限价 - 近7天均价）
 function renderBelowLimitAvgChart(history, limitPrice) {
   const ctx = document.getElementById('trendBelowLimitAvgChart').getContext('2d');
   if (trendCharts.belowLimitAvg) trendCharts.belowLimitAvg.destroy();
 
   if (!limitPrice) {
-    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '该商品未设置限价' } } } });
+    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '该商品未设置限价' } } } });
     return;
   }
 
-  // Calculate average price below limit per shop
+  // Filter to last 7 days
+  const now = new Date();
+  const sevenDaysAgo = new Date(now);
+  sevenDaysAgo.setDate(now.getDate() - 7);
+  const cutoff = sevenDaysAgo.toISOString().substring(0, 10);
+
+  const recentHistory = history.filter(h => {
+    const day = (h.query_time || '').substring(0, 10);
+    return day >= cutoff;
+  });
+
+  // Calculate average price per shop for last 7 days
   const shopTotals = {};
   const shopCounts = {};
-  history.forEach(h => {
+  recentHistory.forEach(h => {
     if (h.price == null || !h.shop_name) return;
     const price = parseFloat(h.price);
-    if (price < limitPrice) {
-      if (!shopTotals[h.shop_name]) { shopTotals[h.shop_name] = 0; shopCounts[h.shop_name] = 0; }
-      shopTotals[h.shop_name] += price;
-      shopCounts[h.shop_name]++;
-    }
+    if (!shopTotals[h.shop_name]) { shopTotals[h.shop_name] = 0; shopCounts[h.shop_name] = 0; }
+    shopTotals[h.shop_name] += price;
+    shopCounts[h.shop_name]++;
   });
 
   const shopNames = Object.keys(shopTotals);
   if (shopNames.length === 0) {
-    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: ['暂无数据'], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '暂无低于限价记录' } } } });
+    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: ['暂无数据'], datasets: [] }, options: { responsive: true, maintainAspectRatio: false, plugins: { title: { display: true, text: '近7天暂无数据' } } } });
     return;
   }
 
-  const avgBelowPrices = shopNames.map(name => parseFloat((shopTotals[name] / shopCounts[name]).toFixed(2)));
-  const bgColors = shopNames.map(name => getShopColor(name).bg);
-  const borderColors = shopNames.map(name => getShopColor(name).border);
+  // Calculate: limitPrice - avgPrice per shop
+  const diffData = shopNames.map(name => parseFloat((limitPrice - shopTotals[name] / shopCounts[name]).toFixed(2)));
+  const bgColors = diffData.map(v => v >= 0 ? 'rgba(22,163,74,0.5)' : 'rgba(220,38,38,0.5)');
+  const borderColors = diffData.map(v => v >= 0 ? '#16a34a' : '#dc2626');
 
   trendCharts.belowLimitAvg = new Chart(ctx, {
     type: 'bar',
     data: {
       labels: shopNames,
       datasets: [{
-        label: '低于限价均价',
-        data: avgBelowPrices,
+        label: '限价 - 近7天均价',
+        data: diffData,
         backgroundColor: bgColors,
         borderColor: borderColors,
         borderWidth: 2,
@@ -2437,10 +2445,15 @@ function renderBelowLimitAvgChart(history, limitPrice) {
       responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { label: ctx => '¥' + ctx.parsed.y } }
+        tooltip: { callbacks: { label: ctx => { const v = ctx.parsed.y; return (v >= 0 ? '低于限价 ¥' + v : '高于限价 ¥' + Math.abs(v)); } } }
       },
       scales: {
-        y: { beginAtZero: false, ticks: { callback: v => '¥' + v } },
+        y: {
+          beginAtZero: false,
+          ticks: { callback: v => (v >= 0 ? '+' : '') + '¥' + v },
+          grid: { color: ctx => ctx.tick.value === 0 ? '#666' : 'rgba(0,0,0,0.06)' },
+          border: { color: 'rgba(0,0,0,0.1)' }
+        },
         x: { ticks: { font: { size: 11 } } }
       }
     }
