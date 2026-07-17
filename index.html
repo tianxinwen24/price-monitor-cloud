@@ -416,58 +416,56 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 
 <!-- ========== 趋势分析 ========== -->
 <div id="page-trend" style="display:none;" class="fade-in">
-  <div class="section-header">
-    <h5 class="section-title"><i class="bi bi-graph-up text-primary"></i> 趋势分析</h5>
+  <div class="section-header" style="margin-bottom:12px;">
+    <h5 class="section-title mb-0"><i class="bi bi-graph-up text-primary"></i> 趋势分析</h5>
     <button class="btn btn-outline-primary btn-sm" onclick="renderTrendCharts()"><i class="bi bi-arrow-clockwise"></i> 刷新</button>
   </div>
-  <div class="card mb-4">
-    <div class="card-body" style="padding:16px 20px;">
+  <div class="card mb-3">
+    <div class="card-body" style="padding:12px 16px;">
       <div class="row g-2 align-items-center">
         <div class="col-md-4 col-6">
           <label class="form-label mb-1" style="font-size:12px;color:var(--text-muted);">选择商品</label>
-          <select class="form-select" id="trend-product" onchange="renderTrendCharts()"></select>
+          <select class="form-select form-select-sm" id="trend-product" onchange="populateTrendShopFilter(); renderTrendCharts()"></select>
         </div>
         <div class="col-md-3 col-6">
-          <label class="form-label mb-1" style="font-size:12px;color:var(--text-muted);">选择平台</label>
-          <select class="form-select" id="trend-platform" onchange="renderTrendCharts()">
-            <option value="">全部平台</option>
-            <option value="淘宝">淘宝</option>
-            <option value="京东">京东</option>
+          <label class="form-label mb-1" style="font-size:12px;color:var(--text-muted);">选择店铺</label>
+          <select class="form-select form-select-sm" id="trend-shop" onchange="renderTrendCharts()">
+            <option value="">全部店铺</option>
           </select>
         </div>
       </div>
     </div>
   </div>
-  <div class="row">
-    <div class="col-md-6 mb-4">
+  <div class="row g-3">
+    <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
-          <h6 class="section-title mb-3"><i class="bi bi-graph-up-arrow text-primary"></i> 价格趋势</h6>
-          <canvas id="trendPriceChart" height="220"></canvas>
+        <div class="card-body" style="padding:12px;">
+          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-graph-up-arrow text-primary"></i> 价格曲线图</h6>
+          <div style="height:240px;position:relative;"><canvas id="trendPriceChart"></canvas></div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
-          <h6 class="section-title mb-3"><i class="bi bi-bar-chart text-success"></i> 店铺均价对比</h6>
-          <canvas id="trendShopAvgChart" height="220"></canvas>
+        <div class="card-body" style="padding:12px;">
+          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-bar-chart text-success"></i> 各店铺均价柱状图（近7天）</h6>
+          <div style="height:240px;position:relative;"><canvas id="trendShopAvgChart"></canvas></div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
-          <h6 class="section-title mb-3"><i class="bi bi-bar-chart-steps text-warning"></i> 价格分布统计</h6>
-          <canvas id="trendDistChart" height="220"></canvas>
+        <div class="card-body" style="padding:12px;">
+          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-exclamation-diamond text-danger"></i> 低于限价天数（累计）</h6>
+          <div style="height:240px;position:relative;"><canvas id="trendWarningDaysChart"></canvas></div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 mb-4">
+    <div class="col-md-6">
       <div class="card">
-        <div class="card-body">
-          <h6 class="section-title mb-3"><i class="bi bi-exclamation-diamond text-danger"></i> 预警频率</h6>
-          <canvas id="trendWarningChart" height="220"></canvas>
+        <div class="card-body" style="padding:12px;">
+          <h6 class="section-title mb-2" style="font-size:13px;"><i class="bi bi-currency-yen text-warning"></i> 低于限价均价</h6>
+          <div style="height:240px;position:relative;"><canvas id="trendBelowLimitAvgChart"></canvas></div>
         </div>
       </div>
     </div>
@@ -649,8 +647,8 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
-const API_BASE = '';
 const CLOUD_MODE = true;
+const API_BASE = '';
 let productsData = {categories: [], shops: [], products: []};
 let currentPrices = [];
 let priceHistory = [];
@@ -658,39 +656,24 @@ let todayQueries = 0;
 let autoRefreshTimer = null;
 let currentView = 'category';
 
-// 云端模式：隐藏不适用的UI元素
-function applyCloudMode() {
-  if (!CLOUD_MODE) return;
-  const monitorBtn = document.getElementById('monitor-btn');
-  if (monitorBtn) monitorBtn.style.display = 'none';
-  const refreshBtn = document.getElementById('refresh-btn');
-  if (refreshBtn) refreshBtn.style.display = 'none';
-  document.querySelectorAll('button').forEach(btn => {
-    if (btn.textContent.includes('导出报表')) {
-      btn.style.display = 'none';
-    }
-  });
-  document.querySelectorAll('.nav-link').forEach(link => {
-    if (link.textContent.includes('商品管理')) {
-      link.closest('.nav-item').style.display = 'none';
-    }
-  });
-  const brand = document.querySelector('.navbar-brand');
-  if (brand && !brand.querySelector('.cloud-badge')) {
-    const badge = document.createElement('span');
-    badge.className = 'cloud-badge';
-    badge.textContent = '云端查看';
-    brand.appendChild(badge);
-  }
-}
-
 // 初始化
 document.addEventListener('DOMContentLoaded', () => {
-  loadAllData().then(() => {
-    applyCloudMode();
-  });
-  checkServerStatus();
-  setInterval(checkServerStatus, 60000);
+  if (CLOUD_MODE) {
+    // Hide backend-dependent buttons
+    ['monitor-btn', 'sync-btn'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el) el.style.display = 'none';
+    });
+    // Hide extension status badge
+    const extBadge = document.getElementById('extension-status');
+    if (extBadge) extBadge.style.display = 'none';
+  }
+  loadAllData();
+  if (!CLOUD_MODE) {
+    checkServerStatus();
+    setInterval(checkServerStatus, 60000);
+    startBackgroundRefresh();
+  }
 });
 
 // 页面切换
@@ -707,17 +690,6 @@ function showPage(page) {
 
 // 检查服务器状态
 async function checkServerStatus() {
-  if (typeof CLOUD_MODE !== 'undefined' && CLOUD_MODE) {
-    document.getElementById('server-status').innerHTML = '<i class="bi bi-cloud-fill" style="font-size:8px;"></i> 云端';
-    document.getElementById('server-status').className = 'badge bg-info ms-2';
-    const extBadge = document.getElementById('ext-status');
-    if (extBadge) {
-      extBadge.innerHTML = '<i class="bi bi-circle-fill" style="font-size:7px;"></i> 只读模式';
-      extBadge.className = 'badge rounded-pill bg-info';
-      extBadge.style.cssText = 'font-size:11px;padding:4px 10px;';
-    }
-    return;
-  }
   try {
     const res = await fetch(API_BASE + '/api/health');
     if (res.ok) {
@@ -756,9 +728,9 @@ async function loadAllData() {
   try {
     if (CLOUD_MODE) {
       const [productsRes, pricesRes, historyRes] = await Promise.all([
-        fetch('data/products.json'),
-        fetch('data/prices.json'),
-        fetch('data/history.json')
+        fetch('data/products.json?t=' + Date.now()),
+        fetch('data/prices.json?t=' + Date.now()),
+        fetch('data/history.json?t=' + Date.now())
       ]);
       productsData = await productsRes.json();
       const pricesData = await pricesRes.json();
@@ -1331,7 +1303,7 @@ async function showProductHistory(productName) {
   modal.show();
   try {
     let history;
-    if (typeof CLOUD_MODE !== 'undefined' && CLOUD_MODE) {
+    if (CLOUD_MODE) {
       history = priceHistory.filter(h => h.product_name === productName);
     } else {
       const res = await fetch(API_BASE + '/api/history?product_name=' + encodeURIComponent(productName));
@@ -2129,7 +2101,7 @@ async function syncToGitHub() {
 // ============================================================
 //  趋势分析
 // ============================================================
-let trendCharts = { price: null, shopAvg: null, dist: null, warning: null };
+let trendCharts = { price: null, shopAvg: null, warningDays: null, belowLimitAvg: null };
 
 const shopColors = {
   '天猫养车旗舰店': { border: '#2563eb', bg: 'rgba(37,99,235,0.15)' },
@@ -2160,25 +2132,47 @@ function populateTrendDropdowns() {
   if (current && productsData.products.find(p => p.product_name === current)) {
     sel.value = current;
   }
+  populateTrendShopFilter();
+}
+
+function populateTrendShopFilter() {
+  const sel = document.getElementById('trend-shop');
+  if (!sel) return;
+  const currentShop = sel.value;
+  sel.innerHTML = '<option value="">全部店铺</option>';
+  const shops = new Set();
+  productsData.products.forEach(p => {
+    if (p.platforms) {
+      Object.values(p.platforms).forEach(platform => {
+        Object.keys(platform).forEach(shopName => shops.add(shopName));
+      });
+    }
+  });
+  shops.forEach(shopName => {
+    sel.innerHTML += `<option value="${shopName}">${shopName}</option>`;
+  });
+  if (currentShop && shops.has(currentShop)) {
+    sel.value = currentShop;
+  }
 }
 
 async function renderTrendCharts() {
   const productName = document.getElementById('trend-product')?.value;
-  const platformFilter = document.getElementById('trend-platform')?.value || '';
+  const shopFilter = document.getElementById('trend-shop')?.value || '';
   if (!productName) return;
 
   try {
     let history;
-    if (typeof CLOUD_MODE !== 'undefined' && CLOUD_MODE) {
+    if (CLOUD_MODE) {
       history = priceHistory.filter(h => h.product_name === productName);
     } else {
       const res = await fetch(API_BASE + '/api/history?product_name=' + encodeURIComponent(productName));
       history = await res.json();
     }
 
-    // Filter by platform if selected
-    if (platformFilter) {
-      history = history.filter(h => h.platform === platformFilter);
+    // Filter by shop if selected
+    if (shopFilter) {
+      history = history.filter(h => h.shop_name === shopFilter);
     }
 
     const product = productsData.products.find(p => p.product_name === productName);
@@ -2186,14 +2180,14 @@ async function renderTrendCharts() {
 
     renderPriceTrendChart(history, limitPrice);
     renderShopAvgChart(history, limitPrice);
-    renderPriceDistChart(history, limitPrice);
-    renderWarningChart(history, limitPrice);
+    renderWarningDaysChart(history, limitPrice);
+    renderBelowLimitAvgChart(history, limitPrice);
   } catch (e) {
     console.error('Trend charts error:', e);
   }
 }
 
-// 1. 价格趋势 (Line Chart)
+// 1. 价格曲线图 (Line Chart - daily)
 function renderPriceTrendChart(history, limitPrice) {
   const ctx = document.getElementById('trendPriceChart').getContext('2d');
   if (trendCharts.price) trendCharts.price.destroy();
@@ -2254,34 +2248,45 @@ function renderPriceTrendChart(history, limitPrice) {
   });
 }
 
-// 2. 平台价格对比 (Bar Chart - aggregated by platform)
+// 2. 各店铺均价柱状图（近7天）
 function renderShopAvgChart(history, limitPrice) {
   const ctx = document.getElementById('trendShopAvgChart').getContext('2d');
   if (trendCharts.shopAvg) trendCharts.shopAvg.destroy();
 
-  // Calculate average price per platform (淘宝/京东)
-  const platformTotals = {};
-  const platformCounts = {};
-  history.forEach(h => {
-    if (h.price == null || !h.platform) return;
-    const price = parseFloat(h.price);
-    if (!platformTotals[h.platform]) { platformTotals[h.platform] = 0; platformCounts[h.platform] = 0; }
-    platformTotals[h.platform] += price;
-    platformCounts[h.platform]++;
+  // Filter to last 7 days
+  const now = new Date();
+  const sevenDaysAgo = new Date(now);
+  sevenDaysAgo.setDate(now.getDate() - 7);
+  const cutoff = sevenDaysAgo.toISOString().substring(0, 10);
+
+  const recentHistory = history.filter(h => {
+    const day = (h.query_time || '').substring(0, 10);
+    return day >= cutoff;
   });
 
-  const platformNames = Object.keys(platformTotals);
-  const avgPrices = platformNames.map(name => parseFloat((platformTotals[name] / platformCounts[name]).toFixed(2)));
+  // Calculate average price per shop
+  const shopTotals = {};
+  const shopCounts = {};
+  recentHistory.forEach(h => {
+    if (h.price == null || !h.shop_name) return;
+    const price = parseFloat(h.price);
+    if (!shopTotals[h.shop_name]) { shopTotals[h.shop_name] = 0; shopCounts[h.shop_name] = 0; }
+    shopTotals[h.shop_name] += price;
+    shopCounts[h.shop_name]++;
+  });
 
-  const platformColors = {
-    '淘宝': { bg: 'rgba(234,88,12,0.8)', border: '#ea580c' },
-    '京东': { bg: 'rgba(37,99,235,0.8)', border: '#2563eb' }
-  };
-  const bgColors = platformNames.map(name => (platformColors[name] || { bg: 'rgba(100,116,139,0.8)' }).bg);
-  const borderColors = platformNames.map(name => (platformColors[name] || { border: '#64748b' }).border);
+  const shopNames = Object.keys(shopTotals);
+  if (shopNames.length === 0) {
+    trendCharts.shopAvg = new Chart(ctx, { type: 'bar', data: { labels: ['暂无数据'], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '近7天暂无数据' } } } });
+    return;
+  }
+
+  const avgPrices = shopNames.map(name => parseFloat((shopTotals[name] / shopCounts[name]).toFixed(2)));
+  const bgColors = shopNames.map(name => getShopColor(name).bg);
+  const borderColors = shopNames.map(name => getShopColor(name).border);
 
   const datasets = [{
-    label: '平台均价',
+    label: '近7天均价',
     data: avgPrices,
     backgroundColor: bgColors,
     borderColor: borderColors,
@@ -2292,14 +2297,14 @@ function renderShopAvgChart(history, limitPrice) {
   if (limitPrice) {
     datasets.push({
       label: '限制底价',
-      data: platformNames.map(() => limitPrice),
+      data: shopNames.map(() => limitPrice),
       type: 'line', borderColor: '#dc2626', borderDash: [6, 4], borderWidth: 2, pointRadius: 0, fill: false
     });
   }
 
   trendCharts.shopAvg = new Chart(ctx, {
     type: 'bar',
-    data: { labels: platformNames, datasets },
+    data: { labels: shopNames, datasets },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
@@ -2308,126 +2313,135 @@ function renderShopAvgChart(history, limitPrice) {
       },
       scales: {
         y: { beginAtZero: false, ticks: { callback: v => '¥' + v } },
-        x: { ticks: { font: { size: 12 } } }
+        x: { ticks: { font: { size: 11 } } }
       }
     }
   });
 }
 
-// 3. 价格分布统计 (Bar Chart)
-function renderPriceDistChart(history, limitPrice) {
-  const ctx = document.getElementById('trendDistChart').getContext('2d');
-  if (trendCharts.dist) trendCharts.dist.destroy();
+// 3. 低于限价天数（累计）
+function renderWarningDaysChart(history, limitPrice) {
+  const ctx = document.getElementById('trendWarningDaysChart').getContext('2d');
+  if (trendCharts.warningDays) trendCharts.warningDays.destroy();
 
-  // Collect all valid prices
-  const allPrices = history.filter(h => h.price != null).map(h => parseFloat(h.price));
-  if (allPrices.length === 0) {
-    trendCharts.dist = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '暂无数据' } } } });
+  if (!limitPrice) {
+    trendCharts.warningDays = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '该商品未设置限价' } } } });
     return;
   }
 
-  // Determine price range and create buckets (5-yuan buckets, at least 3)
-  const minP = Math.floor(Math.min(...allPrices) / 5) * 5;
-  const maxP = Math.ceil(Math.max(...allPrices) / 5) * 5;
-  const range = maxP - minP;
-  const bucketSize = range <= 15 ? 5 : range <= 40 ? 10 : Math.ceil(range / 8 / 10) * 10;
-  const buckets = [];
-  const counts = [];
-  for (let start = minP; start < maxP; start += bucketSize) {
-    const end = start + bucketSize;
-    buckets.push('¥' + start + '-' + end);
-    counts.push(allPrices.filter(p => p >= start && p < end).length);
-  }
-  // Include max value in last bucket
-  if (counts.length > 0) {
-    counts[counts.length - 1] += allPrices.filter(p => p === maxP).length;
-  }
-
-  const barColors = counts.map((_, i) => {
-    const bucketStart = minP + i * bucketSize;
-    if (limitPrice && bucketStart + bucketSize <= limitPrice) return 'rgba(220,38,38,0.25)';
-    if (limitPrice && bucketStart < limitPrice && bucketStart + bucketSize > limitPrice) return 'rgba(245,158,11,0.3)';
-    return 'rgba(37,99,235,0.25)';
-  });
-  const borderColors = counts.map((_, i) => {
-    const bucketStart = minP + i * bucketSize;
-    if (limitPrice && bucketStart + bucketSize <= limitPrice) return '#dc2626';
-    if (limitPrice && bucketStart < limitPrice && bucketStart + bucketSize > limitPrice) return '#f59e0b';
-    return '#2563eb';
+  // Count days below limit per shop
+  const shopDaysBelow = {};
+  history.forEach(h => {
+    if (h.price == null || !h.shop_name) return;
+    const price = parseFloat(h.price);
+    if (price < limitPrice) {
+      const day = (h.query_time || '').substring(0, 10);
+      if (!day) return;
+      const key = h.shop_name + '|' + day;
+      if (!shopDaysBelow[key]) shopDaysBelow[key] = { shop: h.shop_name, days: new Set() };
+      shopDaysBelow[key].days.add(day);
+    }
   });
 
-  trendCharts.dist = new Chart(ctx, {
+  // Aggregate by shop
+  const shopWarningDays = {};
+  Object.values(shopDaysBelow).forEach(item => {
+    if (!shopWarningDays[item.shop]) shopWarningDays[item.shop] = 0;
+    shopWarningDays[item.shop] += item.days.size;
+  });
+
+  const shopNames = Object.keys(shopWarningDays);
+  if (shopNames.length === 0) {
+    trendCharts.warningDays = new Chart(ctx, { type: 'bar', data: { labels: ['暂无预警'], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '暂无低于限价记录' } } } });
+    return;
+  }
+
+  const warningDays = shopNames.map(name => shopWarningDays[name]);
+  const bgColors = shopNames.map(name => getShopColor(name).bg);
+  const borderColors = shopNames.map(name => getShopColor(name).border);
+
+  trendCharts.warningDays = new Chart(ctx, {
     type: 'bar',
     data: {
-      labels: buckets,
-      datasets: [{ label: '出现次数', data: counts, backgroundColor: barColors, borderColor: borderColors, borderWidth: 1.5, borderRadius: 4 }]
+      labels: shopNames,
+      datasets: [{
+        label: '低于限价天数',
+        data: warningDays,
+        backgroundColor: bgColors,
+        borderColor: borderColors,
+        borderWidth: 2,
+        borderRadius: 6
+      }]
     },
     options: {
       responsive: true, maintainAspectRatio: false,
       plugins: {
         legend: { display: false },
-        tooltip: { callbacks: { title: items => items[0].label, label: ctx => ctx.parsed.y + ' 次' } }
+        tooltip: { callbacks: { label: ctx => ctx.parsed.y + ' 天' } }
       },
       scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 1, callback: v => v + '次' } },
-        x: { ticks: { font: { size: 10 } } }
+        y: { beginAtZero: true, ticks: { stepSize: 1, callback: v => v + '天' } },
+        x: { ticks: { font: { size: 11 } } }
       }
     }
   });
 }
 
-// 4. 预警频率 (Area Chart)
-function renderWarningChart(history, limitPrice) {
-  const ctx = document.getElementById('trendWarningChart').getContext('2d');
-  if (trendCharts.warning) trendCharts.warning.destroy();
+// 4. 低于限价均价
+function renderBelowLimitAvgChart(history, limitPrice) {
+  const ctx = document.getElementById('trendBelowLimitAvgChart').getContext('2d');
+  if (trendCharts.belowLimitAvg) trendCharts.belowLimitAvg.destroy();
 
   if (!limitPrice) {
-    trendCharts.warning = new Chart(ctx, { type: 'line', data: { labels: [], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '该商品未设置限价' } } } });
+    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: [], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '该商品未设置限价' } } } });
     return;
   }
 
-  // Count daily warnings (how many shop-price records were below limit each day)
-  const dailyWarnings = {};
+  // Calculate average price below limit per shop
+  const shopTotals = {};
+  const shopCounts = {};
   history.forEach(h => {
-    if (h.price == null) return;
-    const day = (h.query_time || '').substring(0, 10);
-    if (!day) return;
-    if (parseFloat(h.price) < limitPrice) {
-      dailyWarnings[day] = (dailyWarnings[day] || 0) + 1;
+    if (h.price == null || !h.shop_name) return;
+    const price = parseFloat(h.price);
+    if (price < limitPrice) {
+      if (!shopTotals[h.shop_name]) { shopTotals[h.shop_name] = 0; shopCounts[h.shop_name] = 0; }
+      shopTotals[h.shop_name] += price;
+      shopCounts[h.shop_name]++;
     }
   });
 
-  // Get all dates from history
-  const allDates = new Set();
-  history.forEach(h => {
-    const day = (h.query_time || '').substring(0, 10);
-    if (day) allDates.add(day);
-  });
-  const sortedDates = Array.from(allDates).sort();
-  const warningData = sortedDates.map(d => dailyWarnings[d] || 0);
+  const shopNames = Object.keys(shopTotals);
+  if (shopNames.length === 0) {
+    trendCharts.belowLimitAvg = new Chart(ctx, { type: 'bar', data: { labels: ['暂无数据'], datasets: [] }, options: { responsive: true, plugins: { title: { display: true, text: '暂无低于限价记录' } } } });
+    return;
+  }
 
-  trendCharts.warning = new Chart(ctx, {
-    type: 'line',
+  const avgBelowPrices = shopNames.map(name => parseFloat((shopTotals[name] / shopCounts[name]).toFixed(2)));
+  const bgColors = shopNames.map(name => getShopColor(name).bg);
+  const borderColors = shopNames.map(name => getShopColor(name).border);
+
+  trendCharts.belowLimitAvg = new Chart(ctx, {
+    type: 'bar',
     data: {
-      labels: sortedDates.map(d => d.substring(5)),
+      labels: shopNames,
       datasets: [{
-        label: '预警次数',
-        data: warningData,
-        borderColor: '#dc2626',
-        backgroundColor: 'rgba(220,38,38,0.1)',
-        fill: true, tension: 0.3, pointRadius: 3, pointHoverRadius: 5, borderWidth: 2
+        label: '低于限价均价',
+        data: avgBelowPrices,
+        backgroundColor: bgColors,
+        borderColor: borderColors,
+        borderWidth: 2,
+        borderRadius: 6
       }]
     },
     options: {
       responsive: true, maintainAspectRatio: false,
-      interaction: { mode: 'index', intersect: false },
       plugins: {
-        legend: { display: true, position: 'top', labels: { boxWidth: 12, font: { size: 11 } } },
-        tooltip: { callbacks: { label: ctx => '预警 ' + ctx.parsed.y + ' 次' } }
+        legend: { display: false },
+        tooltip: { callbacks: { label: ctx => '¥' + ctx.parsed.y } }
       },
       scales: {
-        y: { beginAtZero: true, ticks: { stepSize: 1, callback: v => v + '次' } },
-        x: { ticks: { maxRotation: 45, maxTicksLimit: 15 } }
+        y: { beginAtZero: false, ticks: { callback: v => '¥' + v } },
+        x: { ticks: { font: { size: 11 } } }
       }
     }
   });
