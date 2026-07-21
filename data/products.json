@@ -3,7 +3,8 @@
     "经典版",
     "绿标",
     "橙标",
-    "2S"
+    "2S",
+    "4S"
   ],
   "product_urls": {
     "2S 55D23": {
@@ -19,7 +20,8 @@
     "2S L2400": {
       "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=544577405248&mi_id=0000MKVPPEpYt2u9uk4fAOYJSso0dabfh90KTNtI12imnTY&ns=1&priceTId=213e002517840883021005721e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22b49d2b450cbc2c8d4d77282bcbc31cca%22%7D&xxc=taobaoSearch",
       "天猫养车旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=588749292074&mi_id=0000MKVPPEpYt2u9uk4fAOYJSso0dabfh90KTNtI12imnTY&ns=1&priceTId=213e002517840883021005721e0fae&spm=a21n57.1.hoverItem.2&utparam=%7B%22aplus_abtest%22%3A%22b49d2b450cbc2c8d4d77282bcbc31cca%22%7D&xxc=taobaoSearch",
-      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/3392902.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0"
+      "骆驼蓄电池秒送旗舰店": "https://item.jd.com/3392902.html?pcdk=9Mk7mBHdXtAPSpMkIbEE_iNUmbuUlFVqpxK5pH0XqOy_BVKcD-F8cvt2jLXnIYM-.3z6a.aI3x&spmTag=YTAyNDAuYjAwMjQ5My5jMDAwMDQwMjcuMyUyM3NrdV9jYXJkJTQwMTc4NDA4ODgyMzkwMCUyMzE3NzY5OTk3MDI4ODEzMTA4NzY5NDAlMjMzNjgyMjI0",
+      "(天猫)瓦尔塔旗舰店": "https://detail.tmall.com/item.htm?ali_refid=a3_430673_1006%3A1416820046%3AH%3ATMXE6hLVSc1t3cQVvKe5sGKdOD0WwyMA%3A674045d55f3ee747b0c1903f40a870bf&ali_trackid=294_674045d55f3ee747b0c1903f40a870bf&id=638081225974&loginBonus=1&mi_id=0000OHewKmKRE0mT2vC3JkjlEAA9os32QtNnVfS3jFyptmQ&mm_sceneid=2_0_1665850159_0&priceTId=2147819c17845976226945939e1043&spm=a21n57.sem.item.1&utparam=%7B%22aplus_abtest%22%3A%229228eea5b7e476c293c08d61a1680761%22%7D&xxc=ad_ztc"
     },
     "橙标 EFB60": {
       "camel骆驼汽配旗舰店": "https://detail.tmall.com/item.htm?abbucket=17&id=1011694793450&mi_id=0000LJs-DQbW-r89ARF46hLdULKOtmOyguYZMiGwYrutRF8&ns=1&priceTId=213e002517840877357016988e0fae&spm=a21n57.1.hoverItem.1&utparam=%7B%22aplus_abtest%22%3A%228bc2bed21d2506262b535de33d835a35%22%7D&xxc=taobaoSearch",
@@ -291,7 +293,8 @@
         },
         "淘宝": {
           "camel骆驼汽配旗舰店": "544577405248",
-          "天猫养车旗舰店": "588749292074"
+          "天猫养车旗舰店": "588749292074",
+          "(天猫)瓦尔塔旗舰店": "638081225974"
         }
       },
       "product_name": "2S L2400"
@@ -317,6 +320,11 @@
       "key": "骆驼蓄电池秒送旗舰店",
       "name": "骆驼蓄电池秒送旗舰店",
       "platform": "京东"
+    },
+    {
+      "key": "(天猫)瓦尔塔旗舰店",
+      "name": "(天猫)瓦尔塔旗舰店",
+      "platform": "淘宝"
     }
   ]
 }
