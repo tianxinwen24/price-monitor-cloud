@@ -579,6 +579,36 @@ body{background:var(--bg);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI
   </div>
 </div>
 
+<!-- Add Shop Modal -->
+<div class="modal fade" id="addShopModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">添加店铺</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label">平台</label>
+          <select class="form-select" id="add-shop-platform">
+            <option value="">请选择平台</option>
+            <option value="淘宝">淘宝/天猫</option>
+            <option value="京东">京东</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">店铺名称</label>
+          <input type="text" class="form-control" id="add-shop-name" placeholder="请输入店铺名称">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-success" onclick="saveNewShop()">添加</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 <!-- Edit Shop Modal -->
 <div class="modal fade" id="editShopModal" tabindex="-1">
   <div class="modal-dialog">
@@ -1973,18 +2003,28 @@ async function saveCategories(categories) {
 
 // 添加店铺
 function showAddShopModal() {
-  const platform = prompt('请输入平台（淘宝/京东）:');
-  if (!platform || !['淘宝', '京东'].includes(platform)) {
-    showToast('平台无效', 'warning');
+  document.getElementById('add-shop-platform').value = '';
+  document.getElementById('add-shop-name').value = '';
+  new bootstrap.Modal(document.getElementById('addShopModal')).show();
+}
+
+function saveNewShop() {
+  const platform = document.getElementById('add-shop-platform').value;
+  const name = document.getElementById('add-shop-name').value.trim();
+  if (!platform) {
+    showToast('请选择平台', 'warning');
     return;
   }
-  const name = prompt('请输入店铺名称:');
-  if (!name) return;
+  if (!name) {
+    showToast('请输入店铺名称', 'warning');
+    return;
+  }
   const key = name;
   if (productsData.shops.find(s => s.key === key)) {
     showToast('店铺已存在', 'warning');
     return;
   }
+  bootstrap.Modal.getInstance(document.getElementById('addShopModal')).hide();
   saveShops([...productsData.shops, { platform, name, key }]);
 }
 
