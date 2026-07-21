@@ -1953,7 +1953,8 @@ async function deleteProduct(name) {
       body: JSON.stringify({
         categories: productsData.categories,
         shops: productsData.shops,
-        products: productsData.products.filter(p => p.product_name !== name)
+        products: productsData.products.filter(p => p.product_name !== name),
+        product_urls: productsData.product_urls || {}
       })
     });
     if (res.ok) {
@@ -1989,7 +1990,7 @@ async function saveCategories(categories) {
     const res = await fetch(API_BASE + '/api/products', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ categories, shops: productsData.shops, products: productsData.products })
+      body: JSON.stringify({ categories, shops: productsData.shops, products: productsData.products, product_urls: productsData.product_urls || {} })
     });
     if (res.ok) {
       showToast('分类已更新', 'success');
@@ -2040,7 +2041,7 @@ async function saveShops(shops) {
     const res = await fetch(API_BASE + '/api/products', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ categories: productsData.categories, shops, products: productsData.products })
+      body: JSON.stringify({ categories: productsData.categories, shops, products: productsData.products, product_urls: productsData.product_urls || {} })
     });
     if (res.ok) {
       showToast('店铺已更新', 'success');
